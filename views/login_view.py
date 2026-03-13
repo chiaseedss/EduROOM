@@ -190,7 +190,7 @@ def show_login(page):
         content=ft.Column([
             ft.Container(
                 content=ft.Image(
-                    src="assets/images/cspc-logo.png",
+                    src="images/cspc-logo.png",
                     width=80,
                     height=80,
                     fit=ft.ImageFit.CONTAIN
@@ -204,7 +204,7 @@ def show_login(page):
             ),
             ft.Container(height=8),
             ft.Image(
-                src="assets/images/EduROOM-logo.png",
+                src="images/EduROOM-logo.png",
                 width=220,
                 height=65,
                 fit=ft.ImageFit.CONTAIN
@@ -302,7 +302,7 @@ def show_login(page):
         ft.Stack([
             ft.Container(
                 image=ft.DecorationImage(
-                    src="assets/images/gradient-bg.png",  
+                    src="images/gradient-bg.png",  
                     fit=ft.ImageFit.COVER,
                 ),
                 blur=10,  

@@ -1,6 +1,7 @@
 import flet as ft
 from data.models import UserModel, ActivityLogModel
 from components.app_header import create_app_header
+from utils.config import normalize_asset_image_path
 
 
 def show_admin_users(page, user_id, role, name):
@@ -473,7 +474,10 @@ def show_admin_users(page, user_id, role, name):
         is_self = user['id'] == user_id
         
         # Get user photo or use default
-        user_photo = user.get("photo") or "../assets/images/default-user.png"
+        user_photo = normalize_asset_image_path(
+            user.get("photo"),
+            default_path="images/default-user.png"
+        )
         
         return ft.Card(
             content=ft.Container(

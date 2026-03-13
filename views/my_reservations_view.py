@@ -1,5 +1,5 @@
 import flet as ft
-from utils.config import ICONS, COLORS
+from utils.config import ICONS, COLORS, normalize_asset_image_path
 from data.models import ReservationModel, ActivityLogModel
 from datetime import datetime, date, time as datetime_time
 from components.app_header import create_app_header
@@ -346,13 +346,10 @@ def show_my_reservations(page, user_id, role, name):
         end = str(res["end_time"])[:5]
         
         # Create room image path
-        image_url = res.get("image_url")
-        if image_url:
-            # If it's already a full path, use it as-is
-            image_src = image_url
-        else:
-            # Default image
-            image_src = "assets/images/classroom-default.png"
+        image_src = normalize_asset_image_path(
+            res.get("image_url"),
+            default_path="images/classroom-default.png"
+        )
 
         # Left section - Room image
         left_section = ft.Container(

@@ -147,17 +147,17 @@ CREATE TABLE IF NOT EXISTS notifications (
 
 -- Insert Real Classrooms
 INSERT INTO classrooms (room_name, building, capacity, status, image_url) VALUES
-('CS Lab', '2nd Floor', 30, 'Available', '../assets/images/cs-lab.png'),
-('ERP Lab', '3rd Floor', 25, 'Available', '../assets/images/erp-lab.png'),
-('IT Lab 1', '2nd Floor', 35, 'Available', '../assets/images/it-lab-1.png'),
-('IT Lab 2', '2nd Floor', 35, 'Available', '../assets/images/it-lab-2.png'),
-('Lecture Room 1', '1st Floor', 50, 'Available', '../assets/images/lecture-room-1.png'),
-('Lecture Room 2', '1st Floor', 45, 'Available', '../assets/images/lecture-room-2.png'),
-('LIS Lab', '4th Floor', 20, 'Available', '../assets/images/lis-lab.png'),
-('MAC Lab', '3rd Floor', 30, 'Available', '../assets/images/mac-lab.png'),
-('NAS Lab', '3rd Floor', 25, 'Available', '../assets/images/nas-lab.png'),
-('Open Lab', '2nd Floor', 40, 'Available', '../assets/images/open-lab.png'),
-('RISE Lab', '4th Floor', 15, 'Available', '../assets/images/rise-lab.png');
+('CS Lab', '2nd Floor', 30, 'Available', 'images/cs-lab.png'),
+('ERP Lab', '3rd Floor', 25, 'Available', 'images/erp-lab.png'),
+('IT Lab 1', '2nd Floor', 35, 'Available', 'images/it-lab-1.png'),
+('IT Lab 2', '2nd Floor', 35, 'Available', 'images/it-lab-2.png'),
+('Lecture Room 1', '1st Floor', 50, 'Available', 'images/lecture-room-1.png'),
+('Lecture Room 2', '1st Floor', 45, 'Available', 'images/lecture-room-2.png'),
+('LIS Lab', '4th Floor', 20, 'Available', 'images/lis-lab.png'),
+('MAC Lab', '3rd Floor', 30, 'Available', 'images/mac-lab.png'),
+('NAS Lab', '3rd Floor', 25, 'Available', 'images/nas-lab.png'),
+('Open Lab', '2nd Floor', 40, 'Available', 'images/open-lab.png'),
+('RISE Lab', '4th Floor', 15, 'Available', 'images/rise-lab.png');
 
 -- Insert Test Users
 -- NOTE: Password hashes correspond to:
@@ -167,70 +167,70 @@ INSERT INTO classrooms (room_name, building, capacity, status, image_url) VALUES
 
 INSERT INTO users (email, id_number, password_hash, role, full_name, photo) VALUES
 -- Admin Account
-('admin@cspc.edu.ph', '00000000', '$2b$12$PUPdb6Nzizg47zWbC7fCQO46bKTEfSkWrY.RrqFGX823lz2fOhONG', 'admin', 'Admin User', '../assets/images/default-user.png'),
+('admin@cspc.edu.ph', '00000000', '$2b$12$PUPdb6Nzizg47zWbC7fCQO46bKTEfSkWrY.RrqFGX823lz2fOhONG', 'admin', 'Admin User', 'images/default-user.png'),
 
 -- Faculty Accounts
-('ibo@my.cspc.edu.ph', '20231001', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mr. Ibo', '../assets/images/allan-ibo.png'),
-('colle@my.cspc.edu.ph', '20231002', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mr. Colle', '../assets/images/default-user.png'),
-('fortuno@my.cspc.edu.ph', '20231003', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Ms. Fortuno', '../assets/images/default-user.png'),
-('pandes@my.cspc.edu.ph', '20231004', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Ms. Pandes', '../assets/images/tiffany-pandes.png'),
-('onesa@my.cspc.edu.ph', '20231005', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mrs. Onesa', '../assets/images/default-user.png'),
-('olleres@my.cspc.edu.ph', '20231006', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mr. Olleres', '../assets/images/default-user.png'),
-('buena@my.cspc.edu.ph', '20231007', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mr. Buena', '../assets/images/default-user.png'),
-('aurillas@my.cspc.edu.ph', '20231008', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mrs. Aurillas', '../assets/images/default-user.png'),
+('ibo@my.cspc.edu.ph', '20231001', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mr. Ibo', 'images/allan-ibo.png'),
+('colle@my.cspc.edu.ph', '20231002', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mr. Colle', 'images/default-user.png'),
+('fortuno@my.cspc.edu.ph', '20231003', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Ms. Fortuno', 'images/default-user.png'),
+('pandes@my.cspc.edu.ph', '20231004', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Ms. Pandes', 'images/tiffany-pandes.png'),
+('onesa@my.cspc.edu.ph', '20231005', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mrs. Onesa', 'images/default-user.png'),
+('olleres@my.cspc.edu.ph', '20231006', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mr. Olleres', 'images/default-user.png'),
+('buena@my.cspc.edu.ph', '20231007', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mr. Buena', 'images/default-user.png'),
+('aurillas@my.cspc.edu.ph', '20231008', '$2b$12$tJzBR7wwDZ6mgx.dW8dk7OVo.RA13eIMK2HZX3BDvLqZtXIEGClyu', 'faculty', 'Mrs. Aurillas', 'images/default-user.png'),
 
 -- Student Accounts
-('blessie@my.cspc.edu.ph', '25123456', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Blessie Bongalos', '../assets/images/blessie-bongalos.png'),
-('ivy@my.cspc.edu.ph', '25123457', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Ivy Doroin', '../assets/images/ivy-doroin.png'),
-('renna@my.cspc.edu.ph', '25123458', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Renna Israel', '../assets/images/renna-israel.png'),
-('tischia@my.cspc.edu.ph', '25123459', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Tischia Olivares', '../assets/images/tischia-olivares.png');
+('blessie@my.cspc.edu.ph', '25123456', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Blessie Bongalos', 'images/blessie-bongalos.png'),
+('ivy@my.cspc.edu.ph', '25123457', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Ivy Doroin', 'images/ivy-doroin.png'),
+('renna@my.cspc.edu.ph', '25123458', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Renna Israel', 'images/renna-israel.png'),
+('tischia@my.cspc.edu.ph', '25123459', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Tischia Olivares', 'images/tischia-olivares.png');
 
--- Insert Sample Reservations with Realistic Schedules for Today and Tomorrow
--- Today's date: 2025-12-06
+-- Insert Sample Reservations with Realistic Schedules for Demo Presentation
+-- Demo date: 2026-03-17
 INSERT INTO reservations (classroom_id, user_id, reservation_date, start_time, end_time, purpose, status) VALUES
--- TODAY (2025-12-09) - Approved schedules for showcase
-(1, 2, '2025-12-09', '08:00:00', '10:00:00', 'Programming Fundamentals', 'approved'),
-(1, 3, '2025-12-09', '10:30:00', '12:30:00', 'Data Structures Lab', 'approved'),
-(1, 4, '2025-12-09', '14:00:00', '16:00:00', 'Algorithm Design Workshop', 'approved'),
+-- DEMO DAY (2026-03-17) - Approved schedules for showcase
+(1, 2, '2026-03-17', '08:00:00', '10:00:00', 'Programming Fundamentals', 'approved'),
+(1, 3, '2026-03-17', '10:30:00', '12:30:00', 'Data Structures Lab', 'approved'),
+(1, 4, '2026-03-17', '14:00:00', '16:00:00', 'Algorithm Design Workshop', 'approved'),
 
-(2, 2, '2025-12-09', '09:00:00', '11:00:00', 'Enterprise Systems Training', 'approved'),
-(2, 3, '2025-12-09', '13:00:00', '15:00:00', 'SAP Module Demo', 'approved'),
+(2, 2, '2026-03-17', '09:00:00', '11:00:00', 'Enterprise Systems Training', 'approved'),
+(2, 3, '2026-03-17', '13:00:00', '15:00:00', 'SAP Module Demo', 'approved'),
 
-(3, 4, '2025-12-09', '08:00:00', '10:00:00', 'Network Configuration Lab', 'approved'),
-(3, 2, '2025-12-09', '13:00:00', '15:00:00', 'Cybersecurity Essentials', 'approved'),
+(3, 4, '2026-03-17', '08:00:00', '10:00:00', 'Network Configuration Lab', 'approved'),
+(3, 2, '2026-03-17', '13:00:00', '15:00:00', 'Cybersecurity Essentials', 'approved'),
 
-(5, 3, '2025-12-09', '09:00:00', '11:00:00', 'Software Engineering Lecture', 'approved'),
-(5, 4, '2025-12-09', '14:00:00', '16:00:00', 'Project Management Seminar', 'approved'),
+(5, 3, '2026-03-17', '09:00:00', '11:00:00', 'Software Engineering Lecture', 'approved'),
+(5, 4, '2026-03-17', '14:00:00', '16:00:00', 'Project Management Seminar', 'approved'),
 
-(6, 2, '2025-12-09', '10:00:00', '12:00:00', 'Research Methodology Lecture', 'approved'),
-(6, 3, '2025-12-09', '15:00:00', '17:00:00', 'Thesis Defense', 'approved'),
+(6, 2, '2026-03-17', '10:00:00', '12:00:00', 'Research Methodology Lecture', 'approved'),
+(6, 3, '2026-03-17', '15:00:00', '17:00:00', 'Thesis Defense', 'approved'),
 
-(7, 2, '2025-12-09', '10:00:00', '12:00:00', 'iOS Development Workshop', 'approved'),
+(7, 2, '2026-03-17', '10:00:00', '12:00:00', 'iOS Development Workshop', 'approved'),
 
-(9, 3, '2025-12-09', '08:00:00', '10:00:00', 'Open Lab Session', 'approved'),
-(9, 4, '2025-12-09', '15:00:00', '17:00:00', 'Student Hackathon', 'approved'),
+(9, 3, '2026-03-17', '08:00:00', '10:00:00', 'Open Lab Session', 'approved'),
+(9, 4, '2026-03-17', '15:00:00', '17:00:00', 'Student Hackathon', 'approved'),
 
--- TOMORROW (2025-12-10) - Mix of approved and pending
-(1, 2, '2025-12-10', '08:00:00', '10:00:00', 'Web Development Class', 'approved'),
-(1, 3, '2025-12-10', '13:00:00', '15:00:00', 'Database Management', 'pending'),
+-- NEXT DAY (2026-03-18) - Mix of approved and pending
+(1, 2, '2026-03-18', '08:00:00', '10:00:00', 'Web Development Class', 'approved'),
+(1, 3, '2026-03-18', '13:00:00', '15:00:00', 'Database Management', 'pending'),
 
-(4, 4, '2025-12-10', '09:00:00', '11:00:00', 'IT Lab Practical Exam', 'approved'),
-(4, 2, '2025-12-10', '14:00:00', '16:00:00', 'Mobile App Development', 'pending'),
+(4, 4, '2026-03-18', '09:00:00', '11:00:00', 'IT Lab Practical Exam', 'approved'),
+(4, 2, '2026-03-18', '14:00:00', '16:00:00', 'Mobile App Development', 'pending'),
 
-(5, 3, '2025-12-10', '10:00:00', '12:00:00', 'Digital Marketing Lecture', 'approved'),
+(5, 3, '2026-03-18', '10:00:00', '12:00:00', 'Digital Marketing Lecture', 'approved'),
 
-(6, 4, '2025-12-10', '13:00:00', '15:00:00', 'Academic Writing Workshop', 'pending'),
+(6, 4, '2026-03-18', '13:00:00', '15:00:00', 'Academic Writing Workshop', 'pending'),
 
-(7, 3, '2025-12-10', '10:00:00', '12:00:00', 'Information Systems Research', 'approved'),
+(7, 3, '2026-03-18', '10:00:00', '12:00:00', 'Information Systems Research', 'approved'),
 
-(8, 4, '2025-12-10', '08:00:00', '10:00:00', 'Network Administration Lab', 'approved'),
+(8, 4, '2026-03-18', '08:00:00', '10:00:00', 'Network Administration Lab', 'approved'),
 
-(9, 2, '2025-12-10', '13:00:00', '15:00:00', 'AI Research Session', 'approved'),
+(9, 2, '2026-03-18', '13:00:00', '15:00:00', 'AI Research Session', 'approved'),
 
--- FUTURE DATES (2025-12-11) - For testing availability
-(1, 2, '2025-12-11', '09:00:00', '11:00:00', 'Advanced Programming', 'pending'),
-(2, 3, '2025-12-11', '13:00:00', '15:00:00', 'Business Intelligence Workshop', 'pending'),
-(6, 4, '2025-12-11', '10:00:00', '12:00:00', 'Capstone Project Presentation', 'pending');
+-- FUTURE DATES (2026-03-19) - For testing availability
+(1, 2, '2026-03-19', '09:00:00', '11:00:00', 'Advanced Programming', 'pending'),
+(2, 3, '2026-03-19', '13:00:00', '15:00:00', 'Business Intelligence Workshop', 'pending'),
+(6, 4, '2026-03-19', '10:00:00', '12:00:00', 'Capstone Project Presentation', 'pending');
 
 -- =====================================================
 -- VERIFICATION QUERIES
@@ -273,5 +273,5 @@ SELECT
     r.status as 'Status'
 FROM reservations r
 JOIN classrooms c ON r.classroom_id = c.id
-WHERE r.reservation_date = '2025-12-09'
+WHERE r.reservation_date = '2026-03-17'
 ORDER BY c.room_name, r.start_time;

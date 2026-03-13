@@ -19,7 +19,7 @@ def main(page: ft.Page):
         pass
 
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
-    page.horizontal_alignmewbent = ft.CrossAxisAlignment.CENTER
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
     page.fonts = {
     "Roboto": "assets/fonts/Roboto-Regular.ttf",
@@ -45,5 +45,6 @@ ft.app(
     target=main,
     assets_dir="assets",
     view=ft.AppView.WEB_BROWSER,
+    host="0.0.0.0",
     port=int(os.getenv("PORT", 8080))
 )

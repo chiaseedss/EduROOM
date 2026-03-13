@@ -3,6 +3,7 @@ import os
 import shutil
 import uuid
 from data.models import UserModel, ActivityLogModel
+from utils.config import normalize_asset_image_path
 from utils.security import ensure_authenticated, touch_session, get_csrf_token
 
 # ==================== CONFIGURATION ====================
@@ -10,8 +11,8 @@ from utils.security import ensure_authenticated, touch_session, get_csrf_token
 ALLOWED_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.gif', '.webp'}
 # Maximum file size: 2MB
 MAX_FILE_SIZE = 2 * 1024 * 1024
-# Directory to store profile pictures
-PROFILE_PICTURES_DIR = "storage/profile_pictures"
+# Directory to store profile pictures under assets so web can serve them
+PROFILE_PICTURES_DIR = os.path.join("assets", "images", "profile_pictures")
 
 
 def validate_image_file(file_path):
@@ -70,7 +71,10 @@ def show_profile(page, user_id, role, name):
         }
     
     # Get current photo path or use default
-    current_photo = user_data.get("photo") or "assets/images/default-user.png"
+    current_photo = normalize_asset_image_path(
+        user_data.get("photo"),
+        default_path="images/default-user.png"
+    )
     
     # ==================== PROFILE PICTURE SECTION ====================
     
@@ -125,9 +129,8 @@ def show_profile(page, user_id, role, name):
             # Copy the file to our storage directory
             shutil.copy2(file_path, destination_path)
             
-            # Store path relative to assets for Flet to find it
-            # Using ../ prefix since views are in a subdirectory
-            relative_path = f"../{destination_path}"
+            # Store as assets-relative path for web compatibility
+            relative_path = f"images/profile_pictures/{unique_filename}"
             
             # Update database with new photo path
             success, message = UserModel.update_user_photo(user_id, relative_path)
@@ -179,7 +182,7 @@ def show_profile(page, user_id, role, name):
     def remove_profile_picture(e):
         """Remove current profile picture and reset to default"""
         try:
-            default_photo = "assets/images/default-user.png"
+            default_photo = "images/default-user.png"
             success, message = UserModel.update_user_photo(user_id, default_photo)
             
             if success:

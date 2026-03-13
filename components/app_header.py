@@ -1,11 +1,15 @@
 import flet as ft
 from data.models import NotificationModel
+from utils.config import normalize_asset_image_path
 
 def create_app_header(page, user_id, role, name, current_page="classrooms"):
     """Create the application header with navigation, notifications, and user drawer"""
     
     # Get photo from session or use default
-    user_photo = page.session.get("user_photo") or "assets/images/default-user.png"
+    user_photo = normalize_asset_image_path(
+        page.session.get("user_photo"),
+        default_path="images/default-user.png"
+    )
     
     # ==================== DRAWER ====================
     def logout_click(e):
@@ -218,7 +222,7 @@ def create_app_header(page, user_id, role, name, current_page="classrooms"):
     
     # ==================== HEADER ====================
     logo = ft.Image(
-        src="../assets/images/EduROOM-logo.png", 
+        src="images/EduROOM-logo.png", 
         width=160,
         fit=ft.ImageFit.CONTAIN
     )

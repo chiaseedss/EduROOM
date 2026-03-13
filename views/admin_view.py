@@ -1,5 +1,5 @@
 import flet as ft
-from utils.config import ICONS, COLORS
+from utils.config import ICONS, COLORS, normalize_asset_image_path
 from data.models import ReservationModel, ActivityLogModel
 from components.app_header import create_app_header
 from utils.security import ensure_authenticated, get_csrf_token, touch_session
@@ -102,7 +102,10 @@ def show_admin_panel(page, user_id, role, name):
         end = str(res["end_time"])
         
         # Create room image path
-        image_src = res.get("image_url") if res.get("image_url") else "../assets/images/classroom-default.png"
+        image_src = normalize_asset_image_path(
+            res.get("image_url"),
+            default_path="images/classroom-default.png"
+        )
         
         # Left side - Room image
         left_section = ft.Container(

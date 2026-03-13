@@ -1,6 +1,6 @@
 import flet as ft
 import datetime
-from utils.config import ICONS, COLORS
+from utils.config import ICONS, COLORS, normalize_asset_image_path
 from data.models import ClassroomModel, ReservationModel
 from views.schedule_view import show_classroom_schedule
 from components.app_header import create_app_header
@@ -59,7 +59,10 @@ def show_dashboard(page, user_id, role, name):
     def create_classroom_card(room):
         """Helper function to create a classroom card"""
         status_color = COLORS.GREEN if room.get("status") == "Available" else "orange"
-        image_src = room.get("image_url") or "../assets/images/classroom-default.png"
+        image_src = normalize_asset_image_path(
+            room.get("image_url"),
+            default_path="images/classroom-default.png"
+        )
 
         def view_schedule_click(e):
             show_classroom_schedule(page, room["id"], room.get("room_name", "Unnamed Room"))

@@ -1,6 +1,7 @@
 from data.database import db
 from utils.auth import hash_password, verify_password
 from datetime import datetime, timedelta
+import secrets
 
 # Import realtime client for WebSocket updates
 try:
@@ -104,6 +105,53 @@ class UserModel:
         user_id = db.execute_query(query, (email, id_number, password_hash, role, full_name))
         db.disconnect()
         return user_id
+    
+    @staticmethod
+    def create_student_user_from_email(email):
+        """Create a new student user from CSPC email OTP login"""
+        try:
+            db.connect()
+            username = email.split("@")[0]
+            full_name = " ".join(part.capitalize() for part in username.split("."))
+
+            # OTP sign-in supports DB schemas that require id_number/password_hash.
+            # Generate a unique internal ID number and random password hash.
+            generated_id_number = None
+            for _ in range(12):
+                candidate = f"9{secrets.randbelow(10**9):09d}"
+                exists = db.fetch_one("SELECT id FROM users WHERE id_number = %s", (candidate,))
+                if not exists:
+                    generated_id_number = candidate
+                    break
+
+            if not generated_id_number:
+                db.disconnect()
+                return None, "Unable to generate a unique ID number for OTP account."
+
+            temp_password_hash = hash_password(secrets.token_urlsafe(24))
+
+            query = """
+                INSERT INTO users (email, id_number, password_hash, full_name, role, is_active)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """
+            user_id = db.execute_query(
+                query,
+                (email, generated_id_number, temp_password_hash, full_name, "student", True),
+            )
+            db.disconnect()
+
+            new_user = {
+                "id": user_id,
+                "email": email,
+                "id_number": generated_id_number,
+                "full_name": full_name,
+                "role": "student",
+                "is_active": True
+            }
+            return new_user, None
+        except Exception as e:
+            db.disconnect()
+            return None, str(e)
     
     @staticmethod
     def get_user_by_id(user_id):

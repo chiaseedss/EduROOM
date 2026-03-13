@@ -168,8 +168,11 @@ def show_login(page):
 
     def complete_login(user, activity_message="User logged in"):
         """Set session values and navigate to dashboard."""
-        hide_loading_overlay()
-        ActivityLogModel.log_activity(user['id'], activity_message)
+        try:
+            ActivityLogModel.log_activity(user['id'], activity_message)
+        except Exception:
+            # Do not block login if audit logging fails.
+            pass
 
         page.session.clear()
         page.session.set("user_id", user['id'])
@@ -180,6 +183,7 @@ def show_login(page):
         touch_session(page)
         get_csrf_token(page)
         show_dashboard(page, user['id'], user['role'], user['full_name'])
+        hide_loading_overlay()
 
     # --- Show notice if session expired due to inactivity ---
     login_notice = page.session.get("login_notice")
@@ -234,7 +238,7 @@ def show_login(page):
             set_login_loading(False)
             show_error("Invalid credentials. Please check your email, ID, and password.")
 
-        threading.Thread(target=_login_worker, daemon=True).start()
+        page.run_thread(_login_worker)
 
     # ==================== OTP STUDENT SIGN-IN FLOW ====================
     otp_step_state = {"value": "send"}
@@ -684,7 +688,7 @@ def show_login(page):
             close_otp_dialog()
             complete_login(new_user, "Student account created via CSPC email OTP")
 
-        threading.Thread(target=_verify_worker, daemon=True).start()
+        page.run_thread(_verify_worker)
 
     def open_otp_dialog(e):
         hide_error()

@@ -1,4 +1,5 @@
 anyio==4.12.0
+azure-communication-email==1.0.0
 bcrypt==4.1.2
 certifi==2025.11.12
 dotenv==0.9.9

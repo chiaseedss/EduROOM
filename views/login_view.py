@@ -111,8 +111,64 @@ def show_login(page):
         error_text.visible = False
         page.update()
 
+    loading_message = ft.Text(
+        "Verifying your account...",
+        size=14,
+        color="#4B5563",
+        text_align=ft.TextAlign.CENTER,
+    )
+    loading_overlay = ft.Container(
+        visible=False,
+        expand=True,
+        bgcolor=ft.Colors.with_opacity(0.36, "#0B1220"),
+        alignment=ft.alignment.center,
+        content=ft.Container(
+            width=320,
+            padding=ft.padding.symmetric(horizontal=24, vertical=22),
+            bgcolor="white",
+            border_radius=18,
+            border=ft.border.all(1, "#E5E7EB"),
+            content=ft.Column(
+                [
+                    ft.ProgressRing(width=26, height=26, stroke_width=2.5),
+                    ft.Text(
+                        "Please wait",
+                        size=18,
+                        weight=ft.FontWeight.W_700,
+                        color="#1F2937",
+                    ),
+                    loading_message,
+                ],
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                spacing=12,
+                tight=True,
+            ),
+        ),
+    )
+
+    def show_loading_overlay(message="Verifying your account..."):
+        loading_message.value = message
+        loading_overlay.visible = True
+        if loading_overlay not in page.overlay:
+            page.overlay.append(loading_overlay)
+        page.update()
+
+    def hide_loading_overlay():
+        loading_overlay.visible = False
+        page.update()
+
+    def set_login_loading(is_loading):
+        if login_button_ref.current:
+            login_button_ref.current.disabled = is_loading
+            login_button_ref.current.content.controls[0].visible = is_loading
+            login_button_ref.current.content.controls[1].value = (
+                "Verifying..." if is_loading else "Login"
+            )
+            page.update()
+
     def complete_login(user, activity_message="User logged in"):
         """Set session values and navigate to dashboard."""
+        hide_loading_overlay()
         ActivityLogModel.log_activity(user['id'], activity_message)
 
         page.session.clear()
@@ -151,47 +207,34 @@ def show_login(page):
         if not is_active:
             show_error(message)
             return
-        
-        page.update()
-        
-        # Authenticate using database (with lockout support)
-        user, error_message = UserModel.authenticate_with_email(email, id_number, password)
 
-        # If account is temporarily locked
-        if error_message:
-            # Reset button state
-            login_button_ref.current.disabled = False
-            login_button_ref.current.content.controls[1].value = "Login"
-            login_button_ref.current.content.controls[0].visible = False
+        set_login_loading(True)
+        show_loading_overlay("Verifying your credentials...")
 
-            show_error(error_message)
+        def _login_worker():
+            try:
+                user, error_message = UserModel.authenticate_with_email(email, id_number, password)
+            except Exception as ex:
+                hide_loading_overlay()
+                set_login_loading(False)
+                show_error(f"Login error: {str(ex)}")
+                return
 
-            # OPTIONAL: log lockout event
-            # ActivityLogModel.log_activity(
-            #     None,
-            #     "Account lockout",
-            #     f"Email: {email}, ID: {id_number}"
-            # )
+            if error_message:
+                hide_loading_overlay()
+                set_login_loading(False)
+                show_error(error_message)
+                return
 
-            page.update()
-            return
+            if user:
+                complete_login(user, "User logged in")
+                return
 
-        if user:
-            complete_login(user, "User logged in")
-        else:
-            # Reset button state
-            login_button_ref.current.disabled = False
-            login_button_ref.current.content.controls[1].value = "Login"
-            login_button_ref.current.content.controls[0].visible = False
-
-            # OPTIONAL: log failed attempt
-            # ActivityLogModel.log_activity(
-            #     None,
-            #     "Failed login",
-            #     f"Email: {email}, ID: {id_number}"
-            # )
-
+            hide_loading_overlay()
+            set_login_loading(False)
             show_error("Invalid credentials. Please check your email, ID, and password.")
+
+        threading.Thread(target=_login_worker, daemon=True).start()
 
     # ==================== OTP STUDENT SIGN-IN FLOW ====================
     otp_step_state = {"value": "send"}
@@ -586,45 +629,62 @@ def show_login(page):
             return
 
         set_verify_loading(True)
+        show_loading_overlay("Verifying OTP and signing you in...")
 
-        success, message = verify_otp(email, otp)
-        if not success:
-            set_verify_loading(False)
-            otp_verify_status.value = message
-            otp_verify_status.color = "#EF4444"
-            page.update()
-            return
-
-        existing_user = UserModel.get_user_by_email(email)
-        if existing_user:
-            if existing_user.get("role") in ("admin", "faculty"):
+        def _verify_worker():
+            try:
+                success, message = verify_otp(email, otp)
+            except Exception as ex:
+                hide_loading_overlay()
                 set_verify_loading(False)
-                otp_verify_status.value = "Admin/Faculty accounts must use the normal Login button."
+                otp_verify_status.value = f"Verification error: {str(ex)}"
                 otp_verify_status.color = "#EF4444"
                 page.update()
                 return
 
-            if not existing_user.get("is_active", True):
+            if not success:
+                hide_loading_overlay()
                 set_verify_loading(False)
-                otp_verify_status.value = "Your account has been deactivated. Please contact an administrator."
+                otp_verify_status.value = message
+                otp_verify_status.color = "#EF4444"
+                page.update()
+                return
+
+            existing_user = UserModel.get_user_by_email(email)
+            if existing_user:
+                if existing_user.get("role") in ("admin", "faculty"):
+                    hide_loading_overlay()
+                    set_verify_loading(False)
+                    otp_verify_status.value = "Admin/Faculty accounts must use the normal Login button."
+                    otp_verify_status.color = "#EF4444"
+                    page.update()
+                    return
+
+                if not existing_user.get("is_active", True):
+                    hide_loading_overlay()
+                    set_verify_loading(False)
+                    otp_verify_status.value = "Your account has been deactivated. Please contact an administrator."
+                    otp_verify_status.color = "#EF4444"
+                    page.update()
+                    return
+
+                close_otp_dialog()
+                complete_login(existing_user, "Student signed in via CSPC email OTP")
+                return
+
+            new_user, create_error = UserModel.create_student_user_from_email(email)
+            if create_error:
+                hide_loading_overlay()
+                set_verify_loading(False)
+                otp_verify_status.value = create_error
                 otp_verify_status.color = "#EF4444"
                 page.update()
                 return
 
             close_otp_dialog()
-            complete_login(existing_user, "Student signed in via CSPC email OTP")
-            return
+            complete_login(new_user, "Student account created via CSPC email OTP")
 
-        new_user, create_error = UserModel.create_student_user_from_email(email)
-        if create_error:
-            set_verify_loading(False)
-            otp_verify_status.value = create_error
-            otp_verify_status.color = "#EF4444"
-            page.update()
-            return
-
-        close_otp_dialog()
-        complete_login(new_user, "Student account created via CSPC email OTP")
+        threading.Thread(target=_verify_worker, daemon=True).start()
 
     def open_otp_dialog(e):
         hide_error()

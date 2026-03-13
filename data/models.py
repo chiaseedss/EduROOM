@@ -113,6 +113,15 @@ class UserModel:
         user = db.fetch_one(query, (user_id,))
         db.disconnect()
         return user
+
+    @staticmethod
+    def get_user_by_email(email):
+        """Get user by email"""
+        db.connect()
+        query = "SELECT * FROM users WHERE email = %s"
+        user = db.fetch_one(query, (email,))
+        db.disconnect()
+        return user
     
     @staticmethod
     def update_user_photo(user_id, photo_path):

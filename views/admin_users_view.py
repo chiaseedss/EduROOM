@@ -2,6 +2,7 @@ import flet as ft
 from data.models import UserModel, ActivityLogModel
 from components.app_header import create_app_header
 from utils.config import normalize_asset_image_path
+from utils.loading import run_with_loading
 
 
 def show_admin_users(page, user_id, role, name):
@@ -10,7 +11,7 @@ def show_admin_users(page, user_id, role, name):
     # Only admin can access this view
     if role != "admin":
         from views.dashboard_view import show_dashboard
-        show_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
         return
     
     # Create the header and drawer
@@ -38,15 +39,15 @@ def show_admin_users(page, user_id, role, name):
     
     def refresh_panel():
         """Refresh the user management panel"""
-        show_admin_users(page, user_id, role, name)
+        run_with_loading(page, lambda: show_admin_users(page, user_id, role, name), message="Refreshing users...")
     
     def back_to_dashboard(e):
         from views.dashboard_view import show_dashboard
-        show_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
     
     def go_to_reservations(e):
         from views.admin_view import show_admin_panel
-        show_admin_panel(page, user_id, role, name)
+        run_with_loading(page, lambda: show_admin_panel(page, user_id, role, name), message="Opening reservations...")
     
     # ==================== USER STATS ====================
     def create_stat_card(title, value, icon, color):

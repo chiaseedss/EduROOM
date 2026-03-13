@@ -5,6 +5,7 @@ import uuid
 from data.models import UserModel, ActivityLogModel
 from utils.config import normalize_asset_image_path
 from utils.security import ensure_authenticated, touch_session, get_csrf_token
+from utils.loading import run_with_loading
 
 # ==================== CONFIGURATION ====================
 # Allowed file extensions for profile pictures
@@ -242,7 +243,7 @@ def show_profile(page, user_id, role, name):
         if file_picker in page.overlay:
             page.overlay.remove(file_picker)
         from views.dashboard_view import show_dashboard
-        show_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
     
     def close_password_modal(e):
         """Close password change modal and reset fields"""

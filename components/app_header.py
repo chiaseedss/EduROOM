@@ -1,6 +1,7 @@
 import flet as ft
 from data.models import NotificationModel
 from utils.config import normalize_asset_image_path
+from utils.loading import run_with_loading
 
 def create_app_header(page, user_id, role, name, current_page="classrooms"):
     """Create the application header with navigation, notifications, and user drawer"""
@@ -16,7 +17,7 @@ def create_app_header(page, user_id, role, name, current_page="classrooms"):
         from views.login_view import show_login
         page.close(drawer)
         page.session.clear()
-        show_login(page)
+        run_with_loading(page, lambda: show_login(page), message="Signing out...")
 
     def toggle_theme(e):
         page.theme_mode = (
@@ -36,7 +37,7 @@ def create_app_header(page, user_id, role, name, current_page="classrooms"):
     def open_profile(e):
         from views.profile_view import show_profile
         page.close(drawer)
-        show_profile(page, user_id, role, name)
+        run_with_loading(page, lambda: show_profile(page, user_id, role, name), message="Opening profile...")
     
     drawer = ft.NavigationDrawer(
         position=ft.NavigationDrawerPosition.END,
@@ -85,10 +86,10 @@ def create_app_header(page, user_id, role, name, current_page="classrooms"):
         
         if role == "faculty":
             from views.my_reservations_view import show_my_reservations
-            show_my_reservations(page, user_id, role, name)
+            run_with_loading(page, lambda: show_my_reservations(page, user_id, role, name), message="Opening reservations...")
         elif role == "admin":
             from views.admin_view import show_admin_panel
-            show_admin_panel(page, user_id, role, name)
+            run_with_loading(page, lambda: show_admin_panel(page, user_id, role, name), message="Opening reservations...")
     
     def create_notification_items():
         """Create notification menu items"""
@@ -229,25 +230,25 @@ def create_app_header(page, user_id, role, name, current_page="classrooms"):
 
     def go_classrooms(e):
         from views.dashboard_view import show_dashboard
-        show_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
 
     def go_reservations_nav(e):
         if role == "faculty":
             from views.my_reservations_view import show_my_reservations
-            show_my_reservations(page, user_id, role, name)
+            run_with_loading(page, lambda: show_my_reservations(page, user_id, role, name), message="Opening reservations...")
         elif role == "admin":
             from views.admin_view import show_admin_panel
-            show_admin_panel(page, user_id, role, name)
+            run_with_loading(page, lambda: show_admin_panel(page, user_id, role, name), message="Opening reservations...")
 
     def go_analytics(e):
         if role == "admin":
             from views.analytics_view import show_analytics_dashboard
-            show_analytics_dashboard(page, user_id, role, name)
+            run_with_loading(page, lambda: show_analytics_dashboard(page, user_id, role, name), message="Loading analytics...")
 
     def go_users(e):
         if role == "admin":
             from views.admin_users_view import show_admin_users
-            show_admin_users(page, user_id, role, name)
+            run_with_loading(page, lambda: show_admin_users(page, user_id, role, name), message="Loading users...")
 
     reservations_enabled = role in ("faculty", "admin")
     analytics_enabled = role == "admin"

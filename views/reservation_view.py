@@ -5,6 +5,7 @@ from datetime import datetime
 from components.app_header import create_app_header
 from components.datetime_picker import DateTimePicker
 from utils.security import ensure_authenticated, touch_session, get_csrf_token
+from utils.loading import run_with_loading
 
 def show_reservation_form(page, user_id, role, name, classroom_id):
     """Display the reservation form for faculty to book classrooms"""
@@ -225,7 +226,7 @@ def show_reservation_form(page, user_id, role, name, classroom_id):
             
             # Navigate back to dashboard
             from views.dashboard_view import show_dashboard
-            show_dashboard(page, user_id, role, name)
+            run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
         else:
             success_text.value = "⚠  Failed to create reservation. Please try again."
             success_text.color = "#D32F2F"
@@ -233,7 +234,7 @@ def show_reservation_form(page, user_id, role, name, classroom_id):
     
     def back_to_dashboard(e):
         from views.dashboard_view import show_dashboard
-        show_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
     
     # Set up datetime picker callbacks
     datetime_picker.set_callbacks(

@@ -11,6 +11,7 @@ except ImportError:
     REALTIME_ENABLED = False
 
 from utils.security import ensure_authenticated, touch_session, get_csrf_token
+from utils.loading import run_with_loading
 
 def show_my_reservations(page, user_id, role, name):
     """Display faculty member's reservations from database"""
@@ -30,11 +31,11 @@ def show_my_reservations(page, user_id, role, name):
     
     def back_to_dashboard(e):
         from views.dashboard_view import show_dashboard
-        show_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
     
     def refresh_view():
         """Refresh the reservations view"""
-        show_my_reservations(page, user_id, role, name)
+        run_with_loading(page, lambda: show_my_reservations(page, user_id, role, name), message="Refreshing reservations...")
     
     # Real-time updates setup
     if REALTIME_ENABLED:

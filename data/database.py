@@ -20,13 +20,6 @@ class Database:
     def _init_pool(self):
         """Create a connection pool"""
         try:
-            ssl_args = {}
-            if self.host != 'localhost' and self.host != '127.0.0.1':
-                ssl_args = {
-                    "ssl_ca": "ca.pem",
-                    "ssl_disabled": False,
-                }
-
             self.pool = mysql.connector.pooling.MySQLConnectionPool(
                 pool_name="eduroom_pool",
                 pool_size=5,
@@ -36,8 +29,7 @@ class Database:
                 password=self.password,
                 database=self.database,
                 port=self.port,
-                connection_timeout=10,
-                **ssl_args
+                connection_timeout=10
             )
             print("✅ Database pool created")
         except Exception as e:

@@ -9,6 +9,7 @@ from utils.config import ICONS, COLORS
 from data.analytics import AnalyticsModel
 from components.app_header import create_app_header
 from utils.security import ensure_authenticated, get_csrf_token, touch_session
+from utils.loading import run_with_loading
 
 def show_analytics_dashboard(page, user_id, role, name):
     """Display analytics dashboard with charts and insights"""
@@ -29,11 +30,11 @@ def show_analytics_dashboard(page, user_id, role, name):
     
     def back_to_dashboard(e):
         from views.dashboard_view import show_dashboard
-        show_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
     
     def refresh_dashboard(e):
         """Refresh all analytics data"""
-        show_analytics_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_analytics_dashboard(page, user_id, role, name), message="Refreshing analytics...")
     
     # Fetch analytics data
     summary = AnalyticsModel.get_reservation_summary()

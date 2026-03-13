@@ -5,6 +5,7 @@ from data.models import ClassroomModel, ReservationModel
 from views.schedule_view import show_classroom_schedule
 from components.app_header import create_app_header
 from utils.security import ensure_authenticated, touch_session, get_csrf_token
+from utils.loading import run_with_loading
 
 def show_dashboard(page, user_id, role, name):
     """Display main dashboard with availability filtering"""
@@ -36,10 +37,11 @@ def show_dashboard(page, user_id, role, name):
 
     def open_reservation_form(classroom_id):
         from views.reservation_view import show_reservation_form
-        page.controls.clear()
-        page.overlay.clear()
-        page.update()
-        show_reservation_form(page, user_id, role, name, classroom_id)
+        run_with_loading(
+            page,
+            lambda: show_reservation_form(page, user_id, role, name, classroom_id),
+            message="Opening reservation form...",
+        )
 
     # Get classrooms from database
     try:

@@ -3,6 +3,7 @@ from utils.config import ICONS, COLORS, normalize_asset_image_path
 from data.models import ReservationModel, ActivityLogModel
 from components.app_header import create_app_header
 from utils.security import ensure_authenticated, get_csrf_token, touch_session
+from utils.loading import run_with_loading
 
 
 try:
@@ -52,11 +53,11 @@ def show_admin_panel(page, user_id, role, name):
     
     def back_to_dashboard(e):
         from views.dashboard_view import show_dashboard
-        show_dashboard(page, user_id, role, name)
+        run_with_loading(page, lambda: show_dashboard(page, user_id, role, name), message="Loading classrooms...")
     
     def refresh_panel():
         """Refresh the admin panel to show updated data"""
-        show_admin_panel(page, user_id, role, name)
+        run_with_loading(page, lambda: show_admin_panel(page, user_id, role, name), message="Refreshing reservations...")
     
     def handle_approve(reservation_id, room_name, requester):
         ReservationModel.approve_reservation(reservation_id)

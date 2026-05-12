@@ -186,46 +186,46 @@ INSERT INTO users (email, id_number, password_hash, role, full_name, photo) VALU
 ('tischia@my.cspc.edu.ph', '25123459', '$2b$12$9yGI7zOzRNxlmV5bX4i84eXujMFv86nOTWpw2H8IYuiIQjqmGWbQC', 'student', 'Tischia Olivares', 'images/tischia-olivares.png');
 
 -- Insert Sample Reservations with Realistic Schedules for Demo Presentation
--- Demo date: 2026-03-17
+-- Demo date: 2026-05-13
 INSERT INTO reservations (classroom_id, user_id, reservation_date, start_time, end_time, purpose, status) VALUES
--- DEMO DAY (2026-03-17) - Approved schedules for showcase
-(1, 2, '2026-03-17', '08:00:00', '10:00:00', 'Programming Fundamentals', 'approved'),
-(1, 3, '2026-03-17', '10:30:00', '12:30:00', 'Data Structures Lab', 'approved'),
-(1, 4, '2026-03-17', '14:00:00', '16:00:00', 'Algorithm Design Workshop', 'approved'),
+-- DEMO DAY (2026-05-13) - Approved schedules for showcase
+(1, 2, '2026-05-13', '08:00:00', '10:00:00', 'Programming Fundamentals', 'approved'),
+(1, 3, '2026-05-13', '10:30:00', '12:30:00', 'Data Structures Lab', 'approved'),
+(1, 4, '2026-05-13', '14:00:00', '16:00:00', 'Algorithm Design Workshop', 'approved'),
 
-(2, 2, '2026-03-17', '09:00:00', '11:00:00', 'Enterprise Systems Training', 'approved'),
-(2, 3, '2026-03-17', '13:00:00', '15:00:00', 'SAP Module Demo', 'approved'),
+(2, 2, '2026-05-13', '09:00:00', '11:00:00', 'Enterprise Systems Training', 'approved'),
+(2, 3, '2026-05-13', '13:00:00', '15:00:00', 'SAP Module Demo', 'approved'),
 
-(3, 4, '2026-03-17', '08:00:00', '10:00:00', 'Network Configuration Lab', 'approved'),
-(3, 2, '2026-03-17', '13:00:00', '15:00:00', 'Cybersecurity Essentials', 'approved'),
+(3, 4, '2026-05-13', '08:00:00', '10:00:00', 'Network Configuration Lab', 'approved'),
+(3, 2, '2026-05-13', '13:00:00', '15:00:00', 'Cybersecurity Essentials', 'approved'),
 
-(5, 3, '2026-03-17', '09:00:00', '11:00:00', 'Software Engineering Lecture', 'approved'),
-(5, 4, '2026-03-17', '14:00:00', '16:00:00', 'Project Management Seminar', 'approved'),
+(5, 3, '2026-05-13', '09:00:00', '11:00:00', 'Software Engineering Lecture', 'approved'),
+(5, 4, '2026-05-13', '14:00:00', '16:00:00', 'Project Management Seminar', 'approved'),
 
-(6, 2, '2026-03-17', '10:00:00', '12:00:00', 'Research Methodology Lecture', 'approved'),
-(6, 3, '2026-03-17', '15:00:00', '17:00:00', 'Thesis Defense', 'approved'),
+(6, 2, '2026-05-13', '10:00:00', '12:00:00', 'Research Methodology Lecture', 'approved'),
+(6, 3, '2026-05-13', '15:00:00', '17:00:00', 'Thesis Defense', 'approved'),
 
-(7, 2, '2026-03-17', '10:00:00', '12:00:00', 'iOS Development Workshop', 'approved'),
+(7, 2, '2026-05-13', '10:00:00', '12:00:00', 'iOS Development Workshop', 'approved'),
 
-(9, 3, '2026-03-17', '08:00:00', '10:00:00', 'Open Lab Session', 'approved'),
-(9, 4, '2026-03-17', '15:00:00', '17:00:00', 'Student Hackathon', 'approved'),
+(9, 3, '2026-05-13', '08:00:00', '10:00:00', 'Open Lab Session', 'approved'),
+(9, 4, '2026-05-13', '15:00:00', '17:00:00', 'Student Hackathon', 'approved'),
 
--- NEXT DAY (2026-03-18) - Mix of approved and pending
-(1, 2, '2026-03-18', '08:00:00', '10:00:00', 'Web Development Class', 'approved'),
-(1, 3, '2026-03-18', '13:00:00', '15:00:00', 'Database Management', 'pending'),
+-- NEXT DAY (2026-05-14) - Mix of approved and pending
+(1, 2, '2026-05-14', '08:00:00', '10:00:00', 'Web Development Class', 'approved'),
+(1, 3, '2026-05-14', '13:00:00', '15:00:00', 'Database Management', 'pending'),
 
-(4, 4, '2026-03-18', '09:00:00', '11:00:00', 'IT Lab Practical Exam', 'approved'),
-(4, 2, '2026-03-18', '14:00:00', '16:00:00', 'Mobile App Development', 'pending'),
+(4, 4, '2026-05-14', '09:00:00', '11:00:00', 'IT Lab Practical Exam', 'approved'),
+(4, 2, '2026-05-14', '14:00:00', '16:00:00', 'Mobile App Development', 'pending'),
 
-(5, 3, '2026-03-18', '10:00:00', '12:00:00', 'Digital Marketing Lecture', 'approved'),
+(5, 3, '2026-05-14', '10:00:00', '12:00:00', 'Digital Marketing Lecture', 'approved'),
 
-(6, 4, '2026-03-18', '13:00:00', '15:00:00', 'Academic Writing Workshop', 'pending'),
+(6, 4, '2026-05-14', '13:00:00', '15:00:00', 'Academic Writing Workshop', 'pending'),
 
-(7, 3, '2026-03-18', '10:00:00', '12:00:00', 'Information Systems Research', 'approved'),
+(7, 3, '2026-05-14', '10:00:00', '12:00:00', 'Information Systems Research', 'approved'),
 
-(8, 4, '2026-03-18', '08:00:00', '10:00:00', 'Network Administration Lab', 'approved'),
+(8, 4, '2026-05-14', '08:00:00', '10:00:00', 'Network Administration Lab', 'approved'),
 
-(9, 2, '2026-03-18', '13:00:00', '15:00:00', 'AI Research Session', 'approved'),
+(9, 2, '2026-05-14', '13:00:00', '15:00:00', 'AI Research Session', 'approved'),
 
 -- FUTURE DATES (2026-03-19) - For testing availability
 (1, 2, '2026-03-19', '09:00:00', '11:00:00', 'Advanced Programming', 'pending'),
@@ -273,5 +273,5 @@ SELECT
     r.status as 'Status'
 FROM reservations r
 JOIN classrooms c ON r.classroom_id = c.id
-WHERE r.reservation_date = '2026-03-17'
+WHERE r.reservation_date = '2026-05-13'
 ORDER BY c.room_name, r.start_time;

@@ -68,6 +68,9 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 ### Deployment
 #### Added
 - `[Tischia Olivares]` - Created Resource Group `eduroom-rg` and Azure Database for MySQL Flexible Server `eduroom-server`
+- `[Tischia Olivares]` - Created Azure Key Vault `eduroom-keyvault` with selected network access
+- `[Tischia Olivares]` - Enabled System-assigned Managed Identity on `eduroom-app` for secure Key Vault access
+- `[Tischia Olivares]` - Assigned `Key Vault Secrets User` role to `eduroom-app` Managed Identity following principle of least privilege
 
 #### Fixed
 - `[Tischia Olivares]` - Fixed GitHub Actions workflow `main_eduroom-app.yml` to deploy to correct app

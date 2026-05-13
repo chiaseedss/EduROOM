@@ -6,15 +6,44 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 
 ---
 
-## [2026-05-13] - Repository Structure and Documentation Setup
+## [Unreleased]
+
+### Added
+- No unreleased additions yet.
+
+### Changed
+- No unreleased changes yet.
+
+### Fixed
+- No unreleased fixes yet.
+
+### Removed
+- No unreleased removals yet.
+
+---
+
+## [2026-05-13] - Cloud Deployment and Project Documentation
+
+### Documentation
 ### Added
 - `[Renna Israel]` - Created `report/` and `report/screenshots/` folders in the repository to organize Deliverable 3 files following the required project repository structure.
 - `[Renna Israel]` - Added `CostEstimateReport.pdf` inside `report/` folder containing the Azure Pricing Calculator cost estimate for the EduROOM cloud deployment.
 - `[Renna Israel]` - Added Azure Pricing Calculator screenshot inside `report/screenshots/` as supporting evidence for the cost estimate report.
 - `[Renna Israel]` - Updated `README.md` with project overview, team members, video link, and demo URL following the final project submission requirements.
+- `[Tischia Olivares]` - Added deployment screenshots in `/deployment/screenshots/`with README.md to show step-by-step explanations for each screenshot
+- `[Tischia Olivares]` - Added architecture diagram to `/diagram/architecture.png` showing all Azure services, connections, protocols, and security boundary
 
 ### Removed
 - `[Renna Israel]` - Removed misplaced `CostEstimateReport.pdf` from the root directory after identifying it was committed outside the required `report/` folder.
+
+
+### Deployment
+#### Fixed
+- `[Tischia Olivares]` - Fixed GitHub Actions login error by updating OIDC federated credentials with correct client ID and tenant ID
+
+#### Removed
+- `[Tischia Olivares]` - Removed Dockerfile, .dockerignore, Procfile, and startup.sh that are no longer needed after switching to GitHub Actions
+
 
 ---
 
@@ -36,79 +65,27 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 ### Removed
 - No removals recorded for this date.
 
----
 
-## [2026-05-11] - Admin Reservation Management
+## [2026-05-12] - Azure Infrastructure Planning and Setup
 
-### Added
+### Deployment
+#### Added
+- `[Tischia Olivares]` - Created Resource Group `eduroom-rg` and Azure Database for MySQL Flexible Server `eduroom-server`
 
-- `Blessie Faith Bongalos` - Added reservation status tracking so users can check whether their submitted reservations are pending, approved, or rejected.
+#### Fixed
+- `[Tischia Olivares]` - Fixed GitHub Actions workflow `main_eduroom-app.yml` to deploy to correct app
 
-### Changed
-- `Blessie Faith Bongalos` - Improved the reservation workflow by separating regular user functions from administrator-only functions.
-
-- `Blessie Faith Bongalos` - Updated the admin dashboard flow to make reservation review and approval easier to demonstrate.
-
-### Fixed
-- `Blessie Faith Bongalos` - Fixed inconsistencies in the reservation management process to make the system behavior clearer during testing and presentation.
-
-### Removed
-- No removals recorded for this date.
+#### Changed
+- `[Tischia Olivares]` - Switched deployment method from Docker/Container Registry to GitHub Actions CI/CD
 
 ---
 
-## [2026-05-10] - User Interface and Navigation Improvements
+## [2026-05-11] - Azure Infrastructure Planning
 
-### Added
-- `Blessie Faith Bongalos` - Added the main dashboard interface for navigating the EduROOM system features.
-
-- `Blessie Faith Bongalos` - Added pages for viewing available rooms, creating reservations, and checking user reservation records.
-
-### Changed
-- `Blessie Faith Bongalos` - Improved the navigation flow between the login page, dashboard, reservation page, admin panel, and user reservation records.
-
-- `Blessie Faith Bongalos` - Updated labels, buttons, and page content to make the application easier to understand during the live demo.
-
-### Fixed
-- `Blessie Faith Bongalos` - Fixed minor layout and navigation issues that affected the smooth demonstration of the web application.
-
-### Removed
-- No removals recorded for this date.
+### Documentation
+#### Added
+- `[Renna Israel]` - Reviewed architecture diagram and verified all 4 Azure services are correctly represented
+- `[Blessie Bongalos]` - Reviewed cloud optimizations in architecture diagram and confirmed alignment with rubric requirements
+- `[Tischia Olivares]` - Designed EduROOM Azure architecture diagram on draw.io showing all services, protocols, and security boundary
 
 ---
-
-## [2026-05-09] - Authentication and User Access
-
-### Added
-- `Blessie Faith Bongalos` - Added the login system that allows users and administrators to access the EduROOM platform.
-
-- `Blessie Faith Bongalos` - Added role-based access handling to separate regular user functions from administrator functions.
-
-### Changed
-- `Blessie Faith Bongalos` - Updated the application flow so authenticated users are directed to the appropriate dashboard after login.
-
-### Fixed
-- `Blessie Faith Bongalos` - Fixed access flow issues to prevent users from directly opening protected pages without logging in.
-
-### Removed
-- No removals recorded for this date.
-
----
-
-## [2026-05-08] - Core EduROOM System Development
-
-### Added
-- `Blessie Faith Bongalos` - Added the initial EduROOM Classroom Reservation System application structure.
-
-- `Blessie Faith Bongalos` - Added the room reservation feature that allows users to select a room, input reservation details, and submit a reservation request.
-
-- `Blessie Faith Bongalos` - Added the basic database structure needed to store users, rooms, reservations, and reservation status records.
-
-### Changed
-- `Blessie Faith Bongalos` - Organized the application files and folders to separate views, data models, and system utilities.
-
-### Fixed
-- `Blessie Faith Bongalos` - Fixed early system errors found during local testing of the reservation workflow.
-
-### Removed
-- No removals recorded for this date.

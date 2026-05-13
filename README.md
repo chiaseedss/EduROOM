@@ -19,9 +19,9 @@
 
 | Name | Role |
 |------|------|
-| Blessie Faith Bongalos | Product Lead / Lead Full-Stack Developer / Lead Backend Engineer |
-| Tischia Ann Olivares | UI/UX Designer / Lead Frontend Engineer
-| Renna Israel | Documentation |
+| Blessie Faith Bongalos | Full-Stack Developer / Backend Engineer / Application Logic & Security |
+| Tischia Ann Olivares | UI/UX Designer / Cloud Engineer / Azure Infrastructure & Deployment |
+| Renna Israel | Documentation / Technical Writer / Project Reporting |
 
 ---
 

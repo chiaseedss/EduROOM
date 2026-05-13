@@ -2,6 +2,13 @@
 
 This document provides step-by-step deployment documentation for EduROOM on Microsoft Azure, following Method B (GUI screenshots).
 
+## Architecture Diagram
+
+![EduROOM Architecture](../diagram/architecture.png)
+
+The diagram above shows the complete Azure architecture for EduROOM. It illustrates the security boundary between public and private zones, how all azure services: App Service, Database for MySQL, Key Vault, and Communication Service  connect to each other. It also shows the three cloud optimizations implemented — GitHub Actions CI/CD, Managed Identity, and 3-instance fault tolerance via Azure's built-in load balancer.
+
+---
 ## Deployment Overview
 
 | Resource | Service | Region |

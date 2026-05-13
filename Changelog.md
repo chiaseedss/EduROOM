@@ -6,19 +6,15 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 
 ---
 
-## [Unreleased]
-
+## [2026-05-13] - Repository Structure and Documentation Setup
 ### Added
-- No unreleased additions yet.
-
-### Changed
-- No unreleased changes yet.
-
-### Fixed
-- No unreleased fixes yet.
+- `[Renna Israel]` - Created `report/` and `report/screenshots/` folders in the repository to organize Deliverable 3 files following the required project repository structure.
+- `[Renna Israel]` - Added `CostEstimateReport.pdf` inside `report/` folder containing the Azure Pricing Calculator cost estimate for the EduROOM cloud deployment.
+- `[Renna Israel]` - Added Azure Pricing Calculator screenshot inside `report/screenshots/` as supporting evidence for the cost estimate report.
+- `[Renna Israel]` - Updated `README.md` with project overview, team members, video link, and demo URL following the final project submission requirements.
 
 ### Removed
-- No unreleased removals yet.
+- `[Renna Israel]` - Removed misplaced `CostEstimateReport.pdf` from the root directory after identifying it was committed outside the required `report/` folder.
 
 ---
 

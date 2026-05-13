@@ -5,12 +5,12 @@
 ---
 
 ## 📽️ Video Presentation
-🔗 [Watch on YouTube](https://www.youtube.com/your-video-link-here)
+🔗 [Watch on YouTube](https://youtu.be/2j4AlsXVCxc)
 
 ---
 
 ## 🌐 Live Demo
-🔗 [View Live Application](https://your-demo-url-here.azurewebsites.net)
+🔗 [View Live Application](eduroom-app.azurewebsites.net)
 
 ---
 
@@ -45,10 +45,9 @@ It replaces manual reservation workflows with a secure, automated, real-time pla
 |-------|------------|
 | Frontend / UI | Python + Flet |
 | Backend | Python |
-| Database | Azure SQL / MySQL |
+| Database | Azure SQL Database for MySQL |
 | Real-Time | WebSockets |
 | Hosting | Microsoft Azure App Service |
-| Storage | Azure Blob Storage |
 
 ---
 

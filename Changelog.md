@@ -46,14 +46,6 @@ Entries across the team should collectively span:
 
 ---
 
-## Ivy Doroin
-
-_Entries to be added._
-
-- YYYY-MM-DD — [Replace with a specific contribution]
-
----
-
 ## Renna Israel
 
 _Entries to be added._

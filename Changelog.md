@@ -22,7 +22,7 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 - `[Renna Israel]` - Added `CostEstimateReport.pdf` inside `report/` folder containing the Azure Pricing Calculator cost estimate for the EduROOM cloud deployment.
 - `[Renna Israel]` - Added Azure Pricing Calculator screenshot inside `report/screenshots/` as supporting evidence for the cost estimate report.
 - `[Renna Israel]` - Updated `README.md` with project overview, team members, video link, and demo URL following the final project submission requirements.
-- `[Tischia Olivares]` - Added deployment screenshots in `/deployment/screenshots/` with README.md to show step-by-step explanations for each screenshot
+- `[Tischia Olivares]` - Added deployment screenshots in `/deployment/screenshots/` with README.md explanations for each deployment step
 - `[Tischia Olivares]` - Added architecture diagram to `/diagram/architecture.png` showing all Azure services, connections, protocols, and security boundary
 - `[Blessie Bongalos]` - Created `CHANGELOG.md` at the repository root following the Keep a Changelog format, structured to log individual contributions across the four project deliverables (architecture diagram, deployment documentation, cost report, and video presentation).
 
@@ -45,15 +45,14 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 ### Removed
 - `[Blessie Bongalos]` - Removed `.env` (database connection credentials) and `ca.pem` (SSL certificate) from Git tracking after discovering they had been committed to the `local-demo` branch. Removal was required before migrating secret handling to Azure Key Vault with Managed Identity authentication.
 
-## [2026-05-12] - Azure Infrastructure Planning and Setup
+## [2026-05-12] - Azure Infrastructure Setup
 ### Deployment
 #### Added
-
-- `[Tischia Olivares]` - Assigned `Key Vault Secrets User` role to `eduroom-app` Managed Identity following principle of least privilege
-- `[Tischia Olivares]` - Enabled System-assigned Managed Identity on `eduroom-app` for secure Key Vault access
-- `[Tischia Olivares]` - Created Azure Key Vault `eduroom-keyvault` with selected network access
 - `[Tischia Olivares]` - Configured Resource Group `eduroom-rg` and Azure Database for MySQL Flexible Server `eduroom-server`
 - `[Tischia Olivares]` - Configured Virtual Network `eduroom-rg-vnet` and integrated App Service with private Azure resources for secure internal communication
+- `[Tischia Olivares]` - Created Azure Key Vault `eduroom-keyvault` with selected network access
+- `[Tischia Olivares]` - Enabled System-assigned Managed Identity on `eduroom-app` for secure Key Vault access
+- `[Tischia Olivares]` - Assigned `Key Vault Secrets User` role to `eduroom-app` Managed Identity following principle of least privilege
 
 #### Fixed
 - `[Tischia Olivares]` - Fixed GitHub Actions workflow `main_eduroom-app.yml` to deploy to correct app

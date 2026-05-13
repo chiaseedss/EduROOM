@@ -1,61 +1,118 @@
-# EduROOM — Project Changelog
+# Changelog
 
-This file tracks individual contributions from each member of the TechValks team throughout the development, deployment, and presentation of the EduROOM Classroom Reservation System on Microsoft Azure.
+All notable changes to this project will be documented in this file.
 
-## Entry format
-
-Each entry follows this format:
-
-```
-- YYYY-MM-DD — Specific description of the change or contribution.
-```
-
-Entries must be:
-
-- Dated with the actual date the work was done.
-- Specific and descriptive. Avoid vague phrases such as "fixed stuff" or "updated code." Name the file, the parameter, the resource, or the document section that was changed.
-- Scoped to a single concrete change or deliverable.
-
-## Required coverage
-
-Entries across the team should collectively span:
-
-- Architecture diagram updates
-- Infrastructure as Code (IaC) scripts
-- Cost report
-- Presentation preparation
-- Application code changes required for cloud deployment
+This changelog follows the Keep a Changelog format and tracks the individual contributions of the TechValks team for the EduROOM Classroom Reservation System, a cloud web application deployed on Microsoft Azure for the CSEC 3 – Cloud Computing final project.
 
 ---
 
-## Blessie Faith Bongalos
+## [Unreleased]
 
-- 2026-05-08 — Added the `schedule_type` ENUM('reservation', 'class') column and `idx_schedule_type` index to the `reservations` table in `eduroom_schema.sql`. Required for the production Azure MySQL deployment to support administrative class plotting alongside faculty reservations.
+### Added
+- No unreleased additions yet.
 
-- 2026-05-09 — Implemented the Class Plotting / Bulk Schedule Input feature: added `ReservationModel.expand_recurring_schedule()` and `ReservationModel.bulk_create_class_schedules()` model methods in `data/models.py` with per-row conflict detection and transactional rollback on failure.
+### Changed
+- No unreleased changes yet.
 
-- 2026-05-10 — Built the admin-facing Class Plotting UI in `views/class_plotting_view.py` with Manual Entry and CSV Upload tabs, including CSV preview, row-level validation against existing room and faculty records, and an inline error report before commit.
+### Fixed
+- No unreleased fixes yet.
 
-- 2026-05-11 — Updated the EduROOM SRS to version 2.0: added FR-014 (Class Plotting / Bulk Schedule Input), expanded FR-010 (Activity Logging) to cover bulk schedule events, expanded FR-013 (CSRF-Style Action Protection) to cover class plotting operations, and amended NFR-001 with a bulk CSV import performance target of 10 seconds for 500 rows.
-
-- 2026-05-12 — Removed `.env` (Aiven database credentials) and `ca.pem` (Aiven SSL certificate) from Git tracking after discovering they had been committed to the `local-demo` branch. Updated `.gitignore` to block re-commits and coordinated with the team to rotate the database password before the Azure migration.
-
-- 2026-05-12 — Produced the 15-page EduROOM System Audit Report documenting reliability and performance findings against the SRS v2.0 non-functional requirements, including a code-level review of the data, view, and WebSocket subsystems and a measured-against-target NFR compliance summary.
-
-- 2026-05-12 — Resolved a merge conflict on `.gitignore` between `local-demo` and `main` after the secrets-removal commit, then merged the feature branch into `main` so the latest class plotting code and clean .gitignore would be deployed via the GitHub Actions workflow to Azure.
+### Removed
+- No unreleased removals yet.
 
 ---
 
-## Renna Israel
+## [2026-05-12] - Final Application Preparation
 
-_Entries to be added._
+### Added
+- `Blessie Faith Bongalos` - Added documentation for the main EduROOM application features demonstrated during the live demo, including user login, room viewing, reservation submission, admin approval, and reservation status tracking.
 
-- YYYY-MM-DD — [Replace with a specific contribution]
+- `Blessie Faith Bongalos` - Added the final system description explaining how EduROOM works as a classroom reservation system for school-based room scheduling.
+
+### Changed
+- `Blessie Faith Bongalos` - Updated the application feature descriptions to make the system easier to explain during the recorded video presentation.
+
+- `Blessie Faith Bongalos` - Updated the system workflow explanation to show how regular users and administrators interact with the application.
+
+### Fixed
+- `Blessie Faith Bongalos` - Reviewed the application flow to make sure the system could be demonstrated end-to-end during the live demo.
+
+### Removed
+- No removals recorded for this date.
 
 ---
 
-## Tischia Ann Olivares
+## [2026-05-11] - Admin Reservation Management
 
-_Entries to be added._
+### Added
 
-- YYYY-MM-DD — [Replace with a specific contribution]
+- `Blessie Faith Bongalos` - Added reservation status tracking so users can check whether their submitted reservations are pending, approved, or rejected.
+
+### Changed
+- `Blessie Faith Bongalos` - Improved the reservation workflow by separating regular user functions from administrator-only functions.
+
+- `Blessie Faith Bongalos` - Updated the admin dashboard flow to make reservation review and approval easier to demonstrate.
+
+### Fixed
+- `Blessie Faith Bongalos` - Fixed inconsistencies in the reservation management process to make the system behavior clearer during testing and presentation.
+
+### Removed
+- No removals recorded for this date.
+
+---
+
+## [2026-05-10] - User Interface and Navigation Improvements
+
+### Added
+- `Blessie Faith Bongalos` - Added the main dashboard interface for navigating the EduROOM system features.
+
+- `Blessie Faith Bongalos` - Added pages for viewing available rooms, creating reservations, and checking user reservation records.
+
+### Changed
+- `Blessie Faith Bongalos` - Improved the navigation flow between the login page, dashboard, reservation page, admin panel, and user reservation records.
+
+- `Blessie Faith Bongalos` - Updated labels, buttons, and page content to make the application easier to understand during the live demo.
+
+### Fixed
+- `Blessie Faith Bongalos` - Fixed minor layout and navigation issues that affected the smooth demonstration of the web application.
+
+### Removed
+- No removals recorded for this date.
+
+---
+
+## [2026-05-09] - Authentication and User Access
+
+### Added
+- `Blessie Faith Bongalos` - Added the login system that allows users and administrators to access the EduROOM platform.
+
+- `Blessie Faith Bongalos` - Added role-based access handling to separate regular user functions from administrator functions.
+
+### Changed
+- `Blessie Faith Bongalos` - Updated the application flow so authenticated users are directed to the appropriate dashboard after login.
+
+### Fixed
+- `Blessie Faith Bongalos` - Fixed access flow issues to prevent users from directly opening protected pages without logging in.
+
+### Removed
+- No removals recorded for this date.
+
+---
+
+## [2026-05-08] - Core EduROOM System Development
+
+### Added
+- `Blessie Faith Bongalos` - Added the initial EduROOM Classroom Reservation System application structure.
+
+- `Blessie Faith Bongalos` - Added the room reservation feature that allows users to select a room, input reservation details, and submit a reservation request.
+
+- `Blessie Faith Bongalos` - Added the basic database structure needed to store users, rooms, reservations, and reservation status records.
+
+### Changed
+- `Blessie Faith Bongalos` - Organized the application files and folders to separate views, data models, and system utilities.
+
+### Fixed
+- `Blessie Faith Bongalos` - Fixed early system errors found during local testing of the reservation workflow.
+
+### Removed
+- No removals recorded for this date.

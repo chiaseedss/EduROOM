@@ -8,16 +8,16 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 
 ## [Unreleased]
 
-### Added
+#### Added
 - No unreleased additions yet.
 
-### Changed
+#### Changed
 - No unreleased changes yet.
 
-### Fixed
+#### Fixed
 - No unreleased fixes yet.
 
-### Removed
+#### Removed
 - No unreleased removals yet.
 
 ---
@@ -25,7 +25,7 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 ## [2026-05-13] - Cloud Deployment and Project Documentation
 
 ### Documentation
-### Added
+#### Added
 - `[Renna Israel]` - Created `report/` and `report/screenshots/` folders in the repository to organize Deliverable 3 files following the required project repository structure.
 - `[Renna Israel]` - Added `CostEstimateReport.pdf` inside `report/` folder containing the Azure Pricing Calculator cost estimate for the EduROOM cloud deployment.
 - `[Renna Israel]` - Added Azure Pricing Calculator screenshot inside `report/screenshots/` as supporting evidence for the cost estimate report.
@@ -33,7 +33,7 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 - `[Tischia Olivares]` - Added deployment screenshots in `/deployment/screenshots/`with README.md to show step-by-step explanations for each screenshot
 - `[Tischia Olivares]` - Added architecture diagram to `/diagram/architecture.png` showing all Azure services, connections, protocols, and security boundary
 
-### Removed
+#### Removed
 - `[Renna Israel]` - Removed misplaced `CostEstimateReport.pdf` from the root directory after identifying it was committed outside the required `report/` folder.
 
 
@@ -49,21 +49,18 @@ This changelog follows the Keep a Changelog format and tracks the individual con
 
 ## [2026-05-12] - Final Application Preparation
 
-### Added
+#### Added
 - `Blessie Faith Bongalos` - Added documentation for the main EduROOM application features demonstrated during the live demo, including user login, room viewing, reservation submission, admin approval, and reservation status tracking.
 
 - `Blessie Faith Bongalos` - Added the final system description explaining how EduROOM works as a classroom reservation system for school-based room scheduling.
 
-### Changed
+#### Changed
 - `Blessie Faith Bongalos` - Updated the application feature descriptions to make the system easier to explain during the recorded video presentation.
 
 - `Blessie Faith Bongalos` - Updated the system workflow explanation to show how regular users and administrators interact with the application.
 
-### Fixed
+#### Fixed
 - `Blessie Faith Bongalos` - Reviewed the application flow to make sure the system could be demonstrated end-to-end during the live demo.
-
-### Removed
-- No removals recorded for this date.
 
 
 ## [2026-05-12] - Azure Infrastructure Planning and Setup

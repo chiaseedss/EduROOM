@@ -11,15 +11,15 @@ The diagram above shows the complete Azure architecture for EduROOM. It illustra
 ---
 ## Deployment Overview
 
-| Resource | Service | Region |
-|----------|---------|--------|
-| eduroom-rg | Resource Group | Korea Central |
-| eduroom-plan | App Service Plan (B1) | Korea Central |
-| eduroom-app | Azure App Service | Korea Central |
-| eduroom-server | Azure Database for MySQL | Korea Central |
-| eduroom-keyvault | Azure Key Vault | Korea Central |
-| eduroom-rg-vnet | Virtual Network | Korea Central |
-| eduroom-communications | Azure Communication Service | Global |
+| Resource | Service |
+|----------|---------|
+| eduroom-rg | Resource Group |
+| eduroom-plan | App Service Plan (B1) |
+| eduroom-app | Azure App Service |
+| eduroom-server | Azure Database for MySQL |
+| eduroom-keyvault | Azure Key Vault |
+| eduroom-rg-vnet | Virtual Network |
+| eduroom-communications | Azure Communication Service |
 
 ---
 
@@ -33,7 +33,7 @@ The diagram above shows the complete Azure architecture for EduROOM. It illustra
 
 ---
 
-## Step-by-Step Screenshots
+## Step-by-Step Screenshots with Explanation
 
 ### 1. Resource Group
 ![Resource Group](screenshots/01-resource-group.png)

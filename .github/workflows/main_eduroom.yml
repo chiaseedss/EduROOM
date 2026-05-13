@@ -55,15 +55,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_583AF6842F8242B68D97F098983F7050 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8E6734DC59CF4FA7AA5FF37789A8915D }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5BDE44B51C9A4A5FB8303DD5BFDDC8B6 }}
-
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_0A5E5FF0064A47A68535220D105E08BB }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_544DB35823F34FA6A386A28DAADCE8BA }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F4CF699563C54F8D8FFB9356B76B0E07 }}
+          
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'eduroom'
+          app-name: 'eduroom-app'
           slot-name: 'Production'
           package: release.zip
 
